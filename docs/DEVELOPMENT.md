@@ -15,7 +15,7 @@ JAVA_HOME=/opt/homebrew/opt/openjdk@17 ./gradlew --no-daemon testReleaseUnitTest
 ```
 
 - 产物：`launcher/app/build/outputs/apk/release/app-release.apk`，发出去时改名为 `AweHome-<versionName>.apk`。
-- 单元测试必须全过，lint 必须是 0 个错误（警告不拦）。
+- 单元测试必须全过，lint 必须是 0 个错误（警告不拦）。CI（`.github/workflows/ci.yml`）在每次推送和 PR 时跑同样的命令。
 - release 版开了 R8 压缩和资源裁剪。电视上测试一律用 release 版，debug 版在电视上明显更卡。
 
 ## 装到电视或模拟器
@@ -40,11 +40,17 @@ TV_HOST=<电视IP> STOCK_LAUNCHER=none ./build-and-install.sh
 ## 发版
 
 1. 升版本号，构建并在电视上验证。
-2. 打标签并在 GitHub 发布，附上改好名的安装包：
+2. 写 `update.json`（电视上「立即检查」读的就是它，见下面「应用内检查更新」），版本号和 `build.gradle` 一致：
+
+```json
+{"versionCode": 36, "versionName": "1.1.1", "url": "https://github.com/qingcheng0111/AweHome/releases/download/v1.1.1/AweHome-1.1.1.apk"}
+```
+
+3. 打标签并在 GitHub 发布，**安装包和 `update.json` 都要附上**：
 
 ```bash
-cp launcher/app/build/outputs/apk/release/app-release.apk AweHome-1.1.0.apk
-gh release create v1.1.0 AweHome-1.1.0.apk --title "AweHome 1.1.0" --notes "这一版改了什么"
+cp launcher/app/build/outputs/apk/release/app-release.apk AweHome-1.1.1.apk
+gh release create v1.1.1 AweHome-1.1.1.apk update.json --title "AweHome 1.1.1" --notes "这一版改了什么"
 ```
 
 安装包不提交进仓库（`.gitignore` 已排除 `*.apk`），只放在 Releases 里。
@@ -58,7 +64,11 @@ release 版目前用构建这台电脑的 debug 密钥签名（`build.gradle` �
 
 ## 应用内检查更新
 
-偏好面板最下面的「立即检查」由 `Updater.java` 实现（照 aerial-tv 的 `Updates.kt` 写）。它读 `launcher/app/src/awehome/res/values/strings_awehome.xml` 里的 `update_url`，**目前是空的**，所以电视上显示「未设置更新地址」。`update_url` 可以是：
+偏好面板最下面的「立即检查」由 `Updater.java` 实现（照 aerial-tv 的 `Updates.kt` 写）。它读 `launcher/app/src/awehome/res/values/strings_awehome.xml` 里的 `update_url`。1.1.1 起填的是 `https://github.com/qingcheng0111/AweHome/releases/latest/download/update.json`，也就是最新 Release 附带的 `update.json`，所以**每次发版都要附上 `update.json`**，否则电视上显示「检查失败」；留空时显示「未设置更新地址」。打开偏好面板时会自动查一次，之后按「立即检查」再查。
+
+没有用 GitHub 的 `api.github.com/…/releases/latest` 接口：不登录时每个 IP 每小时只能查 60 次，很多电视共用一个出口 IP，额度很快用完（实测返回 403 或 404）。`github.com/…/releases/latest/download/…` 的下载链接没有这个限制。
+
+`update_url` 可以是：
 
 - GitHub 的最新版本接口，例如 `https://api.github.com/repos/qingcheng0111/AweHome/releases/latest`：用 Release 的标签和当前版本名比较，第一个 `.apk` 附件就是下载地址；
 - 或者一个 JSON 文件：`{"versionCode": 36, "versionName": "1.1.1", "url": "https://…/AweHome-1.1.1.apk"}`。

@@ -74,7 +74,7 @@ adb shell am start -a android.intent.action.MAIN -c android.intent.category.HOME
 
 ### 升级
 
-下载新版 APK，再运行一次 `adb install -r`，设置、布局和文件夹都会保留。
+1.1.1 起，打开 偏好 → 立即检查，有新版本时选它就会下载，并用电视自己的安装器安装。电视不让 App 安装应用时，下载新版 APK 再运行一次 `adb install -r`。两种方式都会保留设置、布局和文件夹。
 
 ### 还原
 

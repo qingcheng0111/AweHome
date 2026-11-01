@@ -58,7 +58,7 @@ docs/                           文档、截图和品牌图片
 | 开机自启（可选任意 App） | cleanyourtv 已有 `OpenOnStart`，放进了偏好面板 | `PrefsPanel.bootPage` |
 | 信号源名称（13 种预设设备 + 自定义输入框），显示为「名称 + HDMI1 徽标」 | **新写**（设备清单参照 aerial-tv 的 `SourceDevice`） | `InputLooks.java`、`NameDialog.java` |
 | 信号源列表里的 投屏 / TV / DTMB / AV / USB；行数多时可滚动 | **移植 aerial-tv**（`SystemState` 的小米路由与 USB 播放器）；小米电视上 HDMI 与 AV 在没配 `input_sources` 时走 `EXTSRC_PLAY`（`xiaomiRoute`：`hdmiN_order` 或 HW 号 + 18，AV 为 2） | `InputLooks.java`、`MainActivity.showInputs`、`MainActivity.openInput` |
-| 立即检查更新 | **移植 aerial-tv**（`Updates.kt`）；需在 `res/values/strings_awehome.xml` 的 `update_url` 填发布地址，否则显示「未设置更新地址」 | `Updater.java` |
+| 立即检查更新（1.1.1 起读本仓库的 GitHub Releases） | **移植 aerial-tv**（`Updates.kt`）；地址在 `res/values/strings_awehome.xml` 的 `update_url`，留空时显示「未设置更新地址」 | `Updater.java` |
 | 长按菜单：添加到程序坞、四向移一格（菜单不关）、移到文件夹、应用信息 | cleanyourtv 已有移动与程序坞逻辑，**新写**菜单界面 | `TileMenu.java` |
 | 文件夹、隐藏文件夹、打开时背景模糊 | **移植 aerial-tv** 的文件夹模型（`LayoutStore`），**新写**界面 | `Folders.java`、`FolderArt.java`、`FolderOverlay.java` |
 | 进入网格时背景模糊（背景是航拍影片时照常播放、清晰显示，不模糊）、标题区让位、程序坞行置顶 | **新写** | `Backdrop.setGridMode`、`MainActivity.setGridLayout` |

@@ -55,7 +55,7 @@ adb shell am start -a android.intent.action.MAIN -c android.intent.category.HOME
 
 Press Home on the remote: it now opens AweHome. If Android asks which app to use, pick Home (AweHome's name in the system) and then Always. The TV's own launcher stays enabled, in the app list. Many Chinese TVs lock the Home key to their own launcher; there AweHome opens from the app list ([docs/INSTALL.md](docs/INSTALL.md)).
 
-**Update**: download the new APK and run `adb install -r` again; settings, layout and folders stay.
+**Update**: from 1.1.1, Preferences → Check now downloads a newer release and opens the TV's installer. Where the TV does not let apps install apps, download the new APK and run `adb install -r` again. Settings, layout and folders stay either way.
 
 **Undo**: `adb shell cmd package set-home-activity --user 0 <stock launcher component>`, then `adb uninstall com.gathin.tvhome` if you want it gone.
 

@@ -5,8 +5,10 @@
     <string name="brand_name">AweHome</string>
     <string name="brand_tagline">A clean, ad-free TV home screen.</string>
     <string name="pref_version">Version %1$s</string>
-    <!-- 「立即检查」去哪里找新版本：一个 JSON 文件，或 GitHub 的 releases/latest API 地址。 -->
-    <string name="update_url" translatable="false"></string>
+    <!-- 「立即检查」去哪里找新版本：一个 JSON 文件，或 GitHub 的 releases/latest API 地址。
+         用的是最新 Release 附带的 update.json（docs/DEVELOPMENT.md「发版」）：github.com 的下载链接不像 api.github.com
+         那样不登录每个 IP 每小时只能查 60 次，很多电视共用一个出口 IP 时也查得到。 -->
+    <string name="update_url" translatable="false">https://github.com/qingcheng0111/AweHome/releases/latest/download/update.json</string>
 
     <string name="pref_title">Preferences</string>
     <string name="pref_background">Background</string>
