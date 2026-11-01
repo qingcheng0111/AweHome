@@ -1,0 +1,16 @@
+name: 功能建议 / Feature request
+description: 想让 AweHome 多做点什么 / Something you would like AweHome to do
+title: "[建议] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 想要什么 / What you would like
+      description: "写清楚在电视上怎么用、按哪个键、看到什么 / How it would work on the TV: which keys, what you see"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: 为什么需要 / Why

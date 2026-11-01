@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安装说明 / Install guide
+    url: https://github.com/qingcheng0111/AweHome/blob/main/docs/INSTALL.md
+    about: 打开 ADB、安装、设为桌面、还原 / Turning on ADB, installing, making it Home, undoing

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AweHome：为本桌面画的线条图标。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="1.8"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M4.5,6.8h15M9.8,4h4.4M6.8,6.8l0.9,13.2h8.6l0.9,-13.2M10.2,10.2v6.4M13.8,10.2v6.4" />
+</vector>

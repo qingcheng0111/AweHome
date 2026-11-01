@@ -1,0 +1,49 @@
+name: 机型反馈 / Device report
+description: 在你的电视上装得上吗、能当桌面吗 / Does AweHome install and work as Home on your TV
+title: "[机型] "
+labels: ["device"]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: 电视品牌和型号 / TV brand and model
+      placeholder: 小米 Redmi X65 / TCL 75V2
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android 版本 / Android version
+      description: "`adb shell getprop ro.build.version.release`"
+      placeholder: "9"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: AweHome 版本 / AweHome version
+      placeholder: "1.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: 结果 / Result
+      options:
+        - 能用，按主页键回到 AweHome / Works, Home opens AweHome
+        - 能装能打开，但主页键回到原桌面 / Opens, but Home goes to the stock launcher
+        - 装不上 / Does not install
+        - 打开后闪退或黑屏 / Crashes or black screen
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 详细情况 / Details
+      description: 报错原文、怎么装的、哪里不对 / Error text, how you installed it, what is wrong
+  - type: textarea
+    id: home
+    attributes:
+      label: 当前的默认桌面 / Current Home
+      description: "`adb shell cmd package resolve-activity --brief -a android.intent.action.MAIN -c android.intent.category.HOME` 的输出 / its output"
+      render: text

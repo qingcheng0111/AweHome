@@ -1,0 +1,24 @@
+# 构建产物
+launcher/.gradle/
+launcher/build/
+launcher/app/build/
+launcher/local.properties
+launcher/hs_err_pid*.log
+launcher/replay_pid*.log
+*.apk
+*.aab
+
+# tools/ 的 Python 虚拟环境和 ADB 密钥（密钥只属于这台电脑，不能提交）
+tools/venv/
+tools/adbkey/
+__pycache__/
+
+# 本机信息：电视 IP、截图、备份、工作笔记，都不进版本库
+local/
+backup/
+shots/
+work/
+
+.DS_Store
+.idea/
+*.iml

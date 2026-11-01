@@ -1,0 +1,61 @@
+name: 问题反馈 / Bug report
+description: AweHome 某个功能不对、显示错了、闪退 / Something in AweHome is wrong, looks wrong or crashes
+title: "[问题] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前先在 [Issues](https://github.com/qingcheng0111/AweHome/issues?q=is%3Aissue) 搜一下，同样的问题在已有的帖子下面补充就好。
+        Search the existing issues first; if yours is there, add to it.
+        截图里请遮住 Wi‑Fi 名称、城市和账号。 / Please blur Wi‑Fi names, cities and accounts in screenshots.
+  - type: input
+    id: version
+    attributes:
+      label: AweHome 版本 / AweHome version
+      description: 偏好面板最下面写的版本 / Shown at the bottom of the Preferences panel
+      placeholder: "1.1.0"
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: 电视品牌、型号和 Android 版本 / TV brand, model and Android version
+      placeholder: Redmi MiTV-MFTP0 / Android 9
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 哪部分 / Where
+      options:
+        - 首页、程序坞、焦点 / Home, dock, focus
+        - 右上角按钮、信号源 / Top buttons, inputs
+        - 偏好面板 / Preferences panel
+        - 背景、玻璃效果 / Background, glass
+        - 屏保 / Screensaver
+        - 手机传图 / Phone uploads
+        - 天气 / Weather
+        - 其他 / Other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么 / What happens
+      description: 看到了什么，本来应该怎样 / What you see, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 怎么复现 / Steps
+      placeholder: |
+        1.
+        2.
+        3.
+  - type: textarea
+    id: shots
+    attributes:
+      label: 截图、照片或日志 / Screenshots, photos or logs
+      description: 拍电视屏幕也可以；闪退时可以附 `adb logcat -d -b crash` 的输出 / A phone photo is fine; for a crash, the output of `adb logcat -d -b crash`
