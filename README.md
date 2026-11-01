@@ -37,6 +37,7 @@
 - **整理**：长按 OK 键打开菜单，添加到程序坞、上下左右移一格、移到文件夹、查看应用信息；支持文件夹和隐藏文件夹。
 - **信号源**：给每个 HDMI 口起名字（Apple TV、PlayStation、Switch 等 13 种预设，也可以自己输入），列表里还有投屏、TV、DTMB、AV、USB；小米电视上能直接切到对应的口。
 - **手机传图**：扫电视上的二维码，用手机上传墙纸、换 App 图标、设置天气城市。
+- **磁贴图**：国产 App 大多没有给电视设计的横幅，可以给它们推送自己做的 16:9 磁贴图（截图里的磁贴就是这样换的），见[主题文档](docs/THEMES.md#磁贴图)。
 - **语言**：简体中文、繁體中文、English、日本語、한국어、Español，切换后立即生效。
 
 ## 安装
@@ -89,7 +90,7 @@ adb uninstall com.gathin.tvhome   # 不想留着 AweHome 时再卸载
 
 | 机型 | 系统 | 情况 |
 |---|---|---|
-| Redmi 电视 MiTV-MFTP0 | Android 9 | ✅ 日常使用（[笔记](docs/devices/xiaomi-mitv-mftp0.md)） |
+| Redmi 电视 MiTV-MFTP0 | Android 9 | ✅ 日常使用，上面的截图就是在这台电视上拍的（[笔记](docs/devices/xiaomi-mitv-mftp0.md)） |
 | Android TV 模拟器（1080p） | Android 9 | ✅ 开发时用 |
 
 你的电视能用或者有问题，欢迎用 [Issues](https://github.com/qingcheng0111/AweHome/issues/new/choose) 告诉我。

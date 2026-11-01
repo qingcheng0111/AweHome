@@ -37,6 +37,7 @@ No ads and no recommendation feeds: your apps, the weather and the clock.
 - **Organise**: hold OK for a menu to add an app to the dock, move it one step in any direction, put it in a folder or open its app info; folders and a hidden folder.
 - **Inputs**: name each HDMI port (13 presets such as Apple TV, PlayStation and Switch, or your own), plus casting, TV, DTMB, AV and USB; on Xiaomi TVs each one switches straight to its port.
 - **From your phone**: scan the code on the TV to upload wallpapers, change app icons or set the weather city.
+- **Tile art**: most Chinese apps ship no TV banner, so you can push your own 16:9 tile pictures (that is how the tiles in these screenshots were made); see [docs/THEMES.md](docs/THEMES.md#磁贴图).
 - **Languages**: Simplified Chinese, Traditional Chinese, English, Japanese, Korean and Spanish, switched at once.
 
 ## Install
