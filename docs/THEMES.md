@@ -52,3 +52,17 @@ Windows：`powershell -ExecutionPolicy Bypass -File tools\theme.ps1 -TvHost 192.
 ```
 
 偏好面板里改过的每行图标数等设置，优先于主题；推送主题或 `--reset` 会把这些电视上的选择一起清掉。
+
+## 磁贴图
+
+国产 App 大多没有给电视设计的横幅，磁贴上只有一个小图标。可以给它们换成自己做的 16:9 磁贴图（建议 640×360，PNG 或 JPG），文件名是 App 的包名，推到电视上的 `icons/` 目录：
+
+```bash
+adb shell mkdir -p /sdcard/Android/data/com.gathin.tvhome/files/icons
+adb push com.example.app.png /sdcard/Android/data/com.gathin.tvhome/files/icons/
+adb shell am force-stop com.gathin.tvhome   # 重启桌面才会重新读图；按主页键回到桌面即可
+```
+
+取图的顺序：手机传图页上给这个 App 换的图 → 推来的磁贴图 → App 自带的电视横幅 → 图标加名字。删掉推来的文件就恢复原样。
+
+App 的名称和 logo 归各自的权利人所有，自己做的磁贴图放在自己的电视上用，不要提交进本仓库。

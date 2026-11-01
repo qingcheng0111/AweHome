@@ -17,6 +17,8 @@ import java.io.OutputStream;
 /**
  * AweHome：用户自己从手机页面（「上传墙纸与图标」）传来的图标图片，同 Aerial 的 CustomIcons。
  * 以 16:9 存在 files/icons/&lt;package&gt;.png，像应用的横幅一样铺满图标。
+ * 其次是用 adb 推到外部文件目录的磁贴图（Android/data/&lt;本包&gt;/files/icons/&lt;package&gt;.png 或 .jpg，
+ * 见 docs/THEMES.md「磁贴图」），手机传的图优先。
  */
 final class CustomIcons {
     private static final String TAG = "TvHome.CustomIcons";
@@ -33,11 +35,31 @@ final class CustomIcons {
         return file(ctx, pkg).isFile();
     }
 
-    /** 用户为这个应用图标设的图片，没有时为 null。 */
+    /** 用 adb 推来的这个应用的磁贴图，没有时为 null。 */
+    static File pushed(Context ctx, String pkg) {
+        File dir = ctx.getExternalFilesDir("icons");
+        if (dir == null) return null;
+        String name = pkg.replaceAll("[^A-Za-z0-9._-]", "_");
+        for (String ext : new String[]{".png", ".jpg", ".webp"}) {
+            File f = new File(dir, name + ext);
+            if (f.isFile()) return f;
+        }
+        return null;
+    }
+
+    /** 用户为这个应用图标设的图片（手机传的优先，其次是推来的），没有时为 null。 */
     static Drawable drawable(Context ctx, String pkg) {
         File f = file(ctx, pkg);
-        if (!f.isFile()) return null;
-        Bitmap b = BitmapFactory.decodeFile(f.getPath());
+        if (!f.isFile()) f = pushed(ctx, pkg);
+        if (f == null) return null;
+        // 推来的图可能很大：解码到不超过磁贴尺寸的两倍，免得几十张大图占满小内存电视的内存。
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(f.getPath(), bounds);
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inSampleSize = 1;
+        while (bounds.outWidth / (o.inSampleSize * 2) >= W * 2) o.inSampleSize *= 2;
+        Bitmap b = BitmapFactory.decodeFile(f.getPath(), o);
         return b == null ? null : new BitmapDrawable(ctx.getResources(), b);
     }
 
