@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- AweHome：代码里用到的视图 tag 和 id。 -->
-<resources>
-    <item name="menu_action" type="id" />
-    <item name="folderOverlay" type="id" />
-</resources>

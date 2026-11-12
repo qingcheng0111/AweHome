@@ -60,18 +60,9 @@ Press Home on the remote: it now opens AweHome. If Android asks which app to use
 
 **Undo**: `adb shell cmd package set-home-activity --user 0 <stock launcher component>`, then `adb uninstall com.gathin.tvhome` if you want it gone.
 
-## Development
+## Themes and tile artwork
 
-JDK 17 and Android SDK 34 (platform 34, build-tools 34.0.0).
-
-```bash
-cd launcher
-./gradlew testReleaseUnitTest lintRelease assembleRelease
-python3 -m venv ../tools/venv && ../tools/venv/bin/pip install -r ../tools/requirements.txt
-TV_HOST=<tv ip> STOCK_LAUNCHER=none ./build-and-install.sh   # build, install and make it Home, stock launcher left alone
-```
-
-Code map: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Building, version numbers and releases: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). Themes: [docs/THEMES.md](docs/THEMES.md). For AI agents: [AGENTS.md](AGENTS.md). The docs are in Chinese.
+Custom icons, 16:9 tile artwork and wallpaper sets: [docs/THEMES.md](docs/THEMES.md). The docs are in Chinese.
 
 ## Credits and licence
 

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- AweHome 的应用图标（自适应图标）：三层都由 awehome/art/make_awehome_icons.py 生成；单色层供 Android 13 起的主题图标用。 -->
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@mipmap/ic_awehome_background" />
-    <foreground android:drawable="@mipmap/ic_awehome_foreground" />
-    <monochrome android:drawable="@mipmap/ic_awehome_monochrome" />
-</adaptive-icon>

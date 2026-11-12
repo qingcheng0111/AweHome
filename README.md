@@ -71,8 +71,6 @@ adb shell am start -a android.intent.action.MAIN -c android.intent.category.HOME
 
 **U 盘**：把 APK 拷进 U 盘，用电视的文件管理器打开安装，再按主页键选「主屏幕」。
 
-**从源码装**：见下面的[开发](#开发)，`launcher/build-and-install.sh` 会编译、安装并设为桌面。
-
 ### 升级
 
 1.1.1 起，打开 偏好 → 立即检查，有新版本时选它就会下载，并用电视自己的安装器安装。电视不让 App 安装应用时，下载新版 APK 再运行一次 `adb install -r`。两种方式都会保留设置、布局和文件夹。
@@ -95,21 +93,9 @@ adb uninstall com.gathin.tvhome   # 不想留着 AweHome 时再卸载
 
 你的电视能用或者有问题，欢迎用 [Issues](https://github.com/qingcheng0111/AweHome/issues/new/choose) 告诉我。
 
-## 开发
+## 主题与磁贴图
 
-需要 JDK 17、Android SDK 34（platform 34、build-tools 34.0.0）。
-
-```bash
-cd launcher
-./gradlew testReleaseUnitTest lintRelease assembleRelease   # 产物在 app/build/outputs/apk/release/
-python3 -m venv ../tools/venv && ../tools/venv/bin/pip install -r ../tools/requirements.txt
-TV_HOST=<电视IP> STOCK_LAUNCHER=none ./build-and-install.sh   # 编译、安装、设为桌面，不停用原桌面
-```
-
-- 代码结构和每个功能在哪个文件：[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- 构建、版本号规则和发版：[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)
-- 主题（`config.json`、壁纸合集）：[docs/THEMES.md](docs/THEMES.md)
-- 给 AI 代理的说明：[AGENTS.md](AGENTS.md)
+换 App 图标、做 16:9 磁贴图、自定义壁纸合集的说明见 [docs/THEMES.md](docs/THEMES.md)。
 
 ## 致谢与许可
 
